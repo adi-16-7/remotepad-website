@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — RemotePad</title>
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.prose { max-width: 720px; margin: 0 auto; padding: 80px 24px 100px; }
+.prose h1 { font-family: -apple-system,"SF Pro Rounded",system-ui,sans-serif;
+           font-size: clamp(32px,4vw,44px); font-weight: 800; letter-spacing: -0.02em;
+           margin: 0 0 8px; }
+.prose h2 { font-family: -apple-system,"SF Pro Rounded",system-ui,sans-serif;
+           font-size: 22px; margin: 38px 0 12px; }
+.prose .updated { color: var(--label3); font-size: 14px; margin: 0 0 36px; }
+.prose p, .prose li { color: var(--label2); font-size: 16px; line-height: 1.7; }
+.prose strong { color: var(--label); }
+.prose ul { padding-left: 22px; }
+.callout { background: var(--accent-soft); border-radius: var(--r-lg);
+           padding: 22px 24px; margin: 24px 0; border-left: 4px solid var(--accent); }
+.callout p { color: var(--label); margin: 0; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="./" class="brand">
+    <img src="assets/icon.svg" alt="" class="brand-icon" />
+    <span>RemotePad</span>
+  </a>
+  <nav>
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how">How it works</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+
+<main>
+<article class="prose">
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 7, 2026</p>
+
+  <div class="callout">
+    <p><strong>The short version:</strong> RemotePad has no backend. We
+    don't collect, store, or transmit your personal data, keystrokes,
+    mouse movements, or any other usage information. Everything stays
+    between your iPhone and your Mac on your local network.</p>
+  </div>
+
+  <p>This policy explains what data RemotePad ("the app", "we") handles,
+  in plain English. If anything is unclear, write to
+  <a href="mailto:remotepad.feedback@gmail.com">remotepad.feedback@gmail.com</a> and
+  we'll happily explain.</p>
+
+  <h2>What we do not collect</h2>
+  <ul>
+    <li><strong>Your keystrokes, mouse movements, or scroll events.</strong>
+    These travel directly from your iPhone to your Mac over your local
+    network. They never reach a server we control.</li>
+    <li><strong>Your IP address.</strong> The app uses Apple's Network framework
+    to discover your Mac on the local network via Bonjour. Your IP is
+    only seen by your own router.</li>
+    <li><strong>Personal information.</strong> The app does not ask for, store,
+    or transmit your name, email, contacts, photos, location, microphone,
+    or camera data.</li>
+    <li><strong>Analytics or tracking.</strong> We do not embed any third-party
+    analytics SDKs. We do not use advertising IDs.</li>
+  </ul>
+
+  <h2>What is stored on your device</h2>
+  <ul>
+    <li><strong>A pairing secret</strong> is generated when you pair an iPhone
+    with a Mac. It's stored in the iOS Keychain on your iPhone and the
+    macOS Keychain on your Mac. It is used only to sign and verify
+    messages exchanged between your devices. You can clear it at any
+    time via Settings → "Forget all Macs" (iPhone) or by deleting and
+    reinstalling either app.</li>
+    <li><strong>App settings</strong> (preferred tab, dark mode, debug
+    toggles) are stored in iOS UserDefaults / macOS UserDefaults. These
+    never leave your device.</li>
+  </ul>
+
+  <h2>Apple's standard frameworks</h2>
+  <p>If you opt in to <em>Share App Analytics</em> in your iOS Settings →
+  Privacy &amp; Security → Analytics &amp; Improvements, Apple may share
+  aggregated, anonymous crash reports and basic usage statistics with us
+  via Apple's App Store Connect. We use this only to fix crashes. You can
+  turn it off at any time. We never receive personally identifiable
+  information through this channel.</p>
+
+  <h2>In-App Purchases</h2>
+  <p>If you purchase RemotePad Pro, the transaction is handled by Apple's
+  StoreKit. We receive notification that the purchase succeeded but
+  never see your payment method, billing address, or any other financial
+  information.</p>
+
+  <h2>Permissions we ask for</h2>
+  <ul>
+    <li><strong>Local Network</strong> (iOS): so the app can discover your
+    Mac via Bonjour. Used only on your local network.</li>
+    <li><strong>Accessibility</strong> (macOS): so RemoteHost can move the
+    cursor and inject keystrokes on your Mac when your iPhone sends them.</li>
+    <li><strong>Automation → System Events</strong> (macOS): so the
+    Mission Control and switch-spaces buttons in the iPhone app can
+    trigger the corresponding system shortcuts.</li>
+  </ul>
+  <p>You can revoke any of these permissions at any time from System
+  Settings on the respective device.</p>
+
+  <h2>Communications</h2>
+  <p>If you email us at <a href="mailto:remotepad.feedback@gmail.com">remotepad.feedback@gmail.com</a>,
+  we'll see the email address you wrote from. We use that solely to
+  reply to you. We don't add you to any mailing list.</p>
+
+  <h2>Children's privacy</h2>
+  <p>RemotePad is suitable for all ages. We do not knowingly collect
+  data from children, because — as stated above — we do not collect
+  data at all.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If we ever start collecting any data (for example, if we add
+  cloud-based features in the future), we will update this policy and
+  prominently notify existing users via an in-app banner before the
+  change takes effect. Until you see such a notice, you can assume this
+  policy is current.</p>
+
+  <h2>Contact</h2>
+  <p>Questions, concerns, or corrections:
+  <a href="mailto:remotepad.feedback@gmail.com">remotepad.feedback@gmail.com</a>.</p>
+</article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="./" class="brand">
+        <img src="assets/icon.svg" alt="" class="brand-icon" />
+        <span>RemotePad</span>
+      </a>
+      <p class="copyright">© 2026 RemotePad. Made with care.</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:remotepad.feedback@gmail.com">Feedback</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

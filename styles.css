@@ -1,0 +1,565 @@
+/* RemotePad — landing page styles.
+   Single CSS-variable theme mirroring the iOS app palette.
+   Light/dark via prefers-color-scheme.
+   Mobile-first responsive.                                                   */
+
+/* ─── Design tokens (mirror Theme.swift) ─── */
+:root {
+    --page:        #ECECEE;
+    --bg:          #FFFFFF;
+    --bg2:         #F2F2F7;
+    --bg3:         #E5E5EA;
+    --grouped-card:#FFFFFF;
+    --label:       #000000;
+    --label2:      rgba(60,60,67,0.60);
+    --label3:      rgba(60,60,67,0.30);
+    --label4:      rgba(60,60,67,0.16);
+    --sep:         rgba(60,60,67,0.18);
+    --fill:        rgba(118,118,128,0.12);
+    --accent:      #0B97BD;
+    --accent-ink:  #FFFFFF;
+    --accent-soft: rgba(11,151,189,0.12);
+    --green:       #34C759;
+    --shadow-soft: 0 1px 3px rgba(0,0,0,0.06), 0 10px 30px rgba(0,0,0,0.04);
+    --shadow-card: 0 4px 24px rgba(11,151,189,0.10);
+
+    --r-md: 12px;
+    --r-lg: 18px;
+    --r-xl: 26px;
+
+    --max: 1100px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page:        #0A0A0B;
+        --bg:          #000000;
+        --bg2:         #1C1C1E;
+        --bg3:         #2C2C2E;
+        --grouped-card:#1C1C1E;
+        --label:       #FFFFFF;
+        --label2:      rgba(235,235,245,0.60);
+        --label3:      rgba(235,235,245,0.30);
+        --label4:      rgba(235,235,245,0.18);
+        --sep:         rgba(84,84,88,0.55);
+        --fill:        rgba(118,118,128,0.24);
+        --accent:      #3AC2E0;
+        --accent-ink:  #04222B;
+        --accent-soft: rgba(58,194,224,0.16);
+        --green:       #30D158;
+        --shadow-soft: 0 1px 3px rgba(0,0,0,0.4), 0 10px 30px rgba(0,0,0,0.3);
+        --shadow-card: 0 4px 30px rgba(58,194,224,0.16);
+    }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--page);
+    color: var(--label);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img, svg { display: block; max-width: 100%; }
+
+/* ─── Top bar ─── */
+
+.topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    background: color-mix(in oklab, var(--bg) 72%, transparent);
+    border-bottom: 0.5px solid var(--sep);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    max-width: var(--max);
+    margin: 0 auto;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--label);
+    text-decoration: none;
+}
+.brand-icon {
+    width: 28px; height: 28px;
+    border-radius: 7px;
+}
+.topbar nav {
+    display: flex; gap: 22px;
+}
+.topbar nav a {
+    color: var(--label2);
+    font-size: 14px;
+    font-weight: 500;
+}
+.topbar nav a:hover { color: var(--label); text-decoration: none; }
+
+@media (max-width: 640px) {
+    .topbar nav { display: none; }
+}
+
+/* ─── Buttons ─── */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform .12s, opacity .2s;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+    box-shadow: var(--shadow-card);
+}
+.btn-secondary {
+    background: var(--bg2);
+    color: var(--label);
+    border: 1px solid var(--sep);
+}
+
+/* ─── Hero ─── */
+
+.hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+@media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px 40px; }
+}
+
+.kicker {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.hero h1 {
+    font-family: -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    margin: 0 0 22px;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+}
+.accent { color: var(--accent); }
+.lede {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--label2);
+    margin: 0 0 28px;
+    max-width: 480px;
+}
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.micro {
+    font-size: 13px;
+    color: var(--label3);
+    margin: 0;
+}
+
+/* ─── Hero icon showcase ─── */
+.hero-preview { display: flex; justify-content: center; align-items: center; }
+.icon-stage {
+    position: relative;
+    display: grid; place-items: center;
+    padding: 24px;
+}
+/* Soft cyan glow behind the icon — sells the brand colour without
+   any other coloured element on the page */
+.icon-stage::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 55%,
+                rgba(11, 151, 189, 0.30) 0%,
+                rgba(11, 151, 189, 0.10) 35%,
+                transparent 70%);
+    filter: blur(40px);
+    z-index: 0;
+    pointer-events: none;
+}
+@media (prefers-color-scheme: dark) {
+    .icon-stage::before {
+        background: radial-gradient(circle at 50% 55%,
+                    rgba(58, 194, 224, 0.32) 0%,
+                    rgba(58, 194, 224, 0.10) 35%,
+                    transparent 70%);
+    }
+}
+.hero-icon {
+    width: clamp(220px, 38vw, 340px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    /* iOS 18 squircle approximation — radius/width ≈ 0.225 */
+    border-radius: 22.5%;
+    /* Layered shadow: contact + ambient + cyan tint */
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.10),
+        0 30px 60px rgba(0, 0, 0, 0.22),
+        0 0 0 0.5px rgba(255, 255, 255, 0.06) inset;
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0); /* GPU layer for the shadow */
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-icon:hover { transform: translateY(-4px) scale(1.02); }
+
+/* ─── Sections ─── */
+
+section {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 56px 24px;
+}
+section h2 {
+    font-family: -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+    font-size: clamp(26px, 3.6vw, 36px);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    font-weight: 800;
+}
+.section-lede {
+    text-align: center;
+    color: var(--label2);
+    font-size: 16px;
+    margin: 0 auto 40px;
+    max-width: 560px;
+    line-height: 1.5;
+}
+
+/* ─── Feature grid ─── */
+
+.grid {
+    display: grid;
+    gap: 18px;
+}
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 880px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr; } }
+
+.card {
+    background: var(--grouped-card);
+    border-radius: var(--r-lg);
+    padding: 26px;
+    border: 0.5px solid var(--sep);
+}
+.card-icon {
+    width: 44px; height: 44px;
+    border-radius: 11px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+}
+.card h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+}
+.card p {
+    color: var(--label2);
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ─── Steps ─── */
+
+.how { background: var(--bg2); padding: 56px 24px; max-width: none; }
+.how > h2, .how > .steps { max-width: var(--max); margin-left: auto; margin-right: auto; }
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+}
+@media (max-width: 880px) { .steps { grid-template-columns: 1fr; gap: 12px; } }
+.step {
+    background: var(--grouped-card);
+    padding: 22px 22px 20px;
+    border-radius: var(--r-lg);
+}
+.step-num {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 12px;
+    font-family: -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+}
+.step h3 {
+    font-size: 16px;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+}
+.step p {
+    color: var(--label2);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ─── Privacy callout ─── */
+
+/* Pull up so it doesn't double-pad against the .how section above */
+.privacy-callout { padding-top: 36px; padding-bottom: 56px; }
+.privacy-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+    background: var(--grouped-card);
+    border: 0.5px solid var(--sep);
+    border-radius: var(--r-xl);
+    padding: 26px 28px;
+}
+.privacy-icon {
+    width: 52px; height: 52px;
+    border-radius: 13px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.privacy-card h3 {
+    font-family: -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+    font-size: 20px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+}
+.privacy-card p {
+    color: var(--label2);
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin: 0 0 12px;
+}
+.link {
+    font-weight: 600;
+    font-size: 14.5px;
+}
+
+/* ─── Roadmap ─── */
+
+.roadmap {
+    background: var(--bg2);
+    max-width: none;
+    padding: 64px 24px 56px;
+}
+.roadmap-header {
+    max-width: var(--max);
+    margin: 0 auto 36px;
+    text-align: center;
+}
+.roadmap-header .kicker { margin-bottom: 14px; }
+.roadmap-header h2 {
+    margin: 0 0 12px;
+}
+.roadmap-header .section-lede {
+    margin: 0 auto;
+    max-width: 600px;
+}
+.roadmap-track {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.track-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+@media (max-width: 880px) {
+    .track-row { grid-template-columns: 1fr; gap: 12px; }
+}
+.track-label {
+    position: sticky; top: 80px;
+    display: flex; flex-direction: column; gap: 2px;
+    padding-top: 4px;
+}
+.track-version {
+    font-family: -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+.track-when {
+    font-size: 13px;
+    color: var(--label3);
+    font-weight: 500;
+}
+.track-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+@media (max-width: 720px) { .track-cards { grid-template-columns: 1fr; } }
+
+.rcard {
+    background: var(--grouped-card);
+    border: 0.5px solid var(--sep);
+    border-radius: 14px;
+    padding: 18px 20px;
+    position: relative;
+}
+.rcard-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+}
+.rcard h4 {
+    font-size: 15px;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: var(--label);
+}
+.rcard p {
+    font-size: 13.5px;
+    color: var(--label2);
+    line-height: 1.55;
+    margin: 0;
+}
+.rcard-tag {
+    position: absolute;
+    top: 14px; right: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 3px 7px;
+    border-radius: 6px;
+}
+.roadmap-promise {
+    max-width: 580px;
+    margin: 40px auto 0;
+    text-align: center;
+    font-size: 14px;
+    color: var(--label2);
+    line-height: 1.55;
+}
+.roadmap-promise strong { color: var(--label); font-weight: 600; }
+
+/* ─── FAQ ─── */
+
+.faq details {
+    background: var(--grouped-card);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    border: 0.5px solid var(--sep);
+}
+.faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--label);
+    list-style: none;
+    padding-right: 30px;
+    position: relative;
+}
+.faq summary::after {
+    content: "+";
+    position: absolute; right: 0; top: -2px;
+    font-size: 22px;
+    color: var(--label3);
+    transition: transform .2s;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p {
+    color: var(--label2);
+    line-height: 1.6;
+    font-size: 15px;
+    margin: 10px 0 0;
+}
+
+/* ─── Final CTA ─── */
+
+.final-cta {
+    text-align: center;
+    padding: 80px 24px 100px;
+}
+.final-cta .cta-row {
+    justify-content: center;
+    margin-top: 24px;
+}
+
+/* ─── Footer ─── */
+
+footer {
+    background: var(--bg2);
+    border-top: 0.5px solid var(--sep);
+}
+.footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.copyright {
+    color: var(--label3);
+    font-size: 13px;
+    margin: 8px 0 0;
+}
+.footer-nav {
+    display: flex;
+    gap: 22px;
+}
+.footer-nav a {
+    color: var(--label2);
+    font-size: 14px;
+}
+.footer-nav a:hover { color: var(--label); text-decoration: none; }
